@@ -54,6 +54,7 @@ export default function Main() {
                     onSubmitEditing={handleTodo} />
             </View>
             <FlatList data={list}
+                showsVerticalScrollIndicator={false}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) =>
                     <Card toDo={item.text}
