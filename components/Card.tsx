@@ -5,8 +5,8 @@ import { AntDesign } from '@expo/vector-icons'
 
 type Props = {
     toDo: string
-    handleDelete: () => void
     check: boolean
+    handleDelete: () => void
     handleCheck: () => void
 }
 
@@ -14,18 +14,15 @@ export default function Card({ toDo, handleDelete, check, handleCheck }: Props) 
 
     return (
         <View style={styles.cardContainer}>
-            {
-                check ?
-                    <TouchableOpacity onPress={handleCheck}>
-                        <AntDesign name="checksquare" size={25} color="blue" />
-                    </TouchableOpacity>
-                    :
-                    <TouchableOpacity onPress={handleCheck}>
-                        <AntDesign name="checksquareo" size={25} color="white" />
-                    </TouchableOpacity>
-            }
-            <Text style={styles.text}>{toDo}</Text>
-            <TouchableOpacity onPress={handleDelete}>
+            <TouchableOpacity onPress={handleCheck} style={styles.icons}>
+                <AntDesign size={25}
+                    name={check ? "checksquare" : "checksquareo"}
+                    color={check ? "blue" : "white"} />
+            </TouchableOpacity>
+            <View style={{ maxWidth: '70%' }}>
+                <Text style={styles.text}>{toDo}</Text>
+            </View>
+            <TouchableOpacity onPress={handleDelete} style={styles.icons}>
                 <EvilIcons name="trash" size={30} color="red" />
             </TouchableOpacity>
         </View>
